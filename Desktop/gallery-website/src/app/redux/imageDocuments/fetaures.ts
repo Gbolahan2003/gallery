@@ -1,5 +1,5 @@
 import { db, firestore, imageDB } from "@/app/firebase/config";
-import { UserData } from "@/app/userlist/page";
+// import { UserData } from "@/app/userlist/page";
 import { useAuth } from "@/context/authContext";
 import handleErrors from "@/errorHandler";
 import { log } from "console";
@@ -34,12 +34,6 @@ export const addUserData = async (data: { name: string; age: number, comment:str
     const snapshots = await getDocs(friendsRef);
     console.log(snapshots.docs);
     
-    const users: UserData[] = snapshots.docs.map(doc => ({
-    //   id: doc.id,
-      ...doc.data() as UserData
-    }));
-  
-    return users;
   };
   
 
