@@ -15,6 +15,7 @@ import handleErrors from '@/errorHandler'
 import { useAuth } from '@/context/authContext'
 import Link from 'next/link'
 import { AnyARecord } from 'dns'
+import { useRouter } from 'next/navigation'
 
 const SignUp = () => {
   const [showPassword, setShowPassword] = useState(false)
@@ -26,6 +27,8 @@ const SignUp = () => {
     email: Yup.string().email('Invalid email address').required('Email is required'),
     password: Yup.string().required('Password is required'),
   })
+
+  const router = useRouter()
 
   const initialValues = {
     firstName: '',
@@ -52,8 +55,9 @@ const SignUp = () => {
         createdAt: new Date(),
       });
 
-      console.log('Registration successful', user);
+      
       toast.success('Registration successful');
+      router.push('/dashbaord')
     } catch (error) {
       console.error('Error:', error);
       toast.error('Registration failed');
