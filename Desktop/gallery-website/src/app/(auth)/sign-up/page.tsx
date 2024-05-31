@@ -38,34 +38,35 @@ const SignUp = () => {
   }
   const {currentUser, signUp} = useAuth()
 
-  const handleSubmit = async (values:any, { setSubmitting }:any) => {
+  const handleSubmit = async (values:any) => {
     setIsLoading(true);
-    const { firstName, lastName, email, password } = values;
+    // const { firstName, lastName, email, password } = values;
 
-    console.log('Password:', password); // Log the password to debug
+    console.log('Password:', values.password); // Log the password to debug
 
     try {
-      const userCredential = await createUserWithEmailAndPassword(auth, email, password);
+      const userCredential = await createUserWithEmailAndPassword(auth, values.email, values.password);
       const user = userCredential.user;
 
       await setDoc(doc(db, 'users', user.uid), {
-        firstName,
-        lastName,
-        email,
+        firstName:values.firstName,
+        lastName:values.lastName,
+        email:values.email,
         createdAt: new Date(),
-      });
+      }, {merge:true});
 
       
       toast.success('Registration successful');
-      router.push('/dashbaord')
+      router.push('/dashboard')
     } catch (error) {
       console.error('Error:', error);
       toast.error('Registration failed');
     } finally {
       setIsLoading(false);
-      setSubmitting(false);
+   
     }
   };
+  
   const imageUrl = 'https://images.unsplash.com/photo-1506748686214-e9df14d4d9d0?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&q=80&w=1080';
 
 
@@ -94,7 +95,7 @@ const SignUp = () => {
         <Form className="space-y-6">
        <div className="flex  lg:gap-2 md:gap-1 gap-6 md:flex-row lg:flex-row flex-col">   
        <div className="lg:w-1/2 md:1/2"><CustomInput name="firstName" label="" placeholder="first name" /></div>
-          <div className="lg:w-1/2 md:1/2"><CustomInput name="LastName" label="" placeholder="Last name" /></div></div>
+          <div className="lg:w-1/2 md:1/2"><CustomInput name="lastName" label="" placeholder="Last name" /></div></div>
           <CustomInput name="email" label="" placeholder="Email" />
           <CustomInput
             name="password"

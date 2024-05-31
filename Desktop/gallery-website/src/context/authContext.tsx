@@ -10,7 +10,7 @@ import { auth } from "@/app/firebase/config"; // Adjust the path as needed
 
 interface AuthContextType {
   currentUser: FirebaseUser | null|any;
-  signUp: (email: string, password: string) => Promise<void>;
+  signUp: (firstName:string, lastName:string, email: string, password: string) => Promise<void|any>;
   signIn: (email: string, password: string) => Promise<void>;
   logOut: () => Promise<void>;
 }
