@@ -29,20 +29,8 @@ export const addUserData = async (data: { name: string; age: number, comment:str
     }
   };
 
-  // export const fetchDatas = async (uid:string) => {
-  //   const friendsRef = collection(db, `users/${uid}/friends`);
-  //   const snapshots = await getDocs(friendsRef);
-  //   console.log(snapshots.docs);
-    
-  //   const users: UserData[] = snapshots.docs.map(doc => ({
-  //   //   id: doc.id,
-  //     ...doc.data() as UserData
-  //   }));             
-  
-  //   return users;
-  // };
-  
 
+  
 
   export const uploadImage = ({ image, name, description, width, height}: UploadImageProps, uid: string) => async (dispatch: Dispatch) => {
     try {
