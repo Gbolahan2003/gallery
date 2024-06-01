@@ -19,6 +19,7 @@ import DeleteModal from '@/components/modals/deleteModal'
 import { batch } from 'react-redux'
 import ShareModal from '@/components/modals/shareModal'
 import ProgressBar from '@/components/element/progressBar'
+import { getUser } from '../redux/auth/features'
 
 
  const DashboardPage = () => {
@@ -29,14 +30,18 @@ import ProgressBar from '@/components/element/progressBar'
   const ImageData = useAppSelector(state=>state.imageDocument.imageMetaData)
   const show = useAppSelector(state=>state.utils.show)
   const deleteId = useAppSelector(state=>state.utils.deleteId)
-  const isSubmitting =useAppSelector(state=>state.utils.isSubmitting)
+  const userData= useAppSelector(state=>state.auth.UserData)
   const shareImage:any= useAppSelector(state=>state.utils.shareImage)
 
 useEffect( ()=>{
+  dispatch(getUser(currentUser.uid))
    dispatch(fetchImageMetadata(currentUser.uid))
 
 },[dispatch, currentUser])
   
+if(userData === null){
+  return <ProgressBar/>
+}
 
 const handleDelete=async()=>{
   dispatch(setIsSubmitting(true))
@@ -64,11 +69,11 @@ const handleDelete=async()=>{
               <div className="w-full"><Navbar/></div>
             <div className={` bg-background min-h-screen text-primary-text px-8`}>
     <header className="p-4 flex lg:flex-row flex-col justify-between items-center mb-10">
-      <h1 className="text-3xl font-bold">Welcome to your Gallery</h1>
+      <h1 className="text-3xl font-bold">Welcome, {userData?.firstName}</h1>
       {/* <h1 className="text-secondary-text">Welcome to your gallery {users?.firstName}.</h1> */}
       <button
       onClick={()=>dispatch(showItem('AddImage'))}
-        className="mt-4 p-2 bg-primary-accent text-primary-text rounded-lg"
+        className="mt-4 p-2 px-4 bg-primary-accent text-primary-text rounded-lg"
 
       >
     Upload New Photo

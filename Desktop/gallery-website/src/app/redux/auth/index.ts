@@ -1,13 +1,15 @@
 import { PayloadAction, createSlice } from "@reduxjs/toolkit";
-import { userAccessToken } from "./interface";
+import { user, userAccessToken, userData } from "./interface";
 
 
 interface authstate{
-    userAccesssToken:userAccessToken|null
+    userAccesssToken:userAccessToken|null,
+    UserData:userData|null
 }
 
 const initialState:authstate={
-    userAccesssToken:null
+    userAccesssToken:null,
+    UserData:null
 }
 
 const authSlice = createSlice({
@@ -17,10 +19,13 @@ const authSlice = createSlice({
         setUserAccessToken:(state:authstate, action:PayloadAction<userAccessToken>)=>{
             state.userAccesssToken = action.payload
         },
+        setuser:(state:authstate, action:PayloadAction<userData>)=>{
+            state.UserData = action.payload
+        }
     }
 
 })
 
 export default authSlice
 
-export const {setUserAccessToken}= authSlice.actions
+export const {setUserAccessToken, setuser}= authSlice.actions

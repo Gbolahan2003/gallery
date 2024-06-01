@@ -4,8 +4,9 @@ import { user } from "@/types/interfaces";
 import { createUserWithEmailAndPassword, signInWithEmailAndPassword, signOut } from "firebase/auth";
 import { Dispatch } from "redux";
 import { toast } from "sonner";
-import { loginprops } from "./interface";
-import { doc, setDoc } from "firebase/firestore";
+import { loginprops, userData } from "./interface";
+import { doc, getDoc, setDoc } from "firebase/firestore";
+import { setuser } from ".";
 
 
 
@@ -31,6 +32,21 @@ export const login = (data:loginprops)=>async(dispatch:Dispatch)=>{
     try {
         const response = await signInWithEmailAndPassword(auth, data.email, data.password)
         return true
+    } catch (error) {
+        handleErrors(error)
+        return false
+    }
+}
+
+export const getUser = (uid:string)=> async(dispatch:Dispatch)=>{
+    try {
+        const UserSnap = await getDoc(doc(db, `users/${uid}`))
+        if(UserSnap.exists()){
+            const userData:userData|any =UserSnap.data()
+            await dispatch(setuser(userData))
+        }
+
+
     } catch (error) {
         handleErrors(error)
         return false

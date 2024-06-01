@@ -12,3 +12,8 @@ export interface loginprops{
     password:string
   }
   
+  export interface userData {
+    email:string,
+    firstName:string,
+    lastName:string
+  }
