@@ -7,23 +7,28 @@ import Image from 'next/image';
 import { ImageMetadata } from '@/app/redux/imageDocuments/interface';
 import Iconify from '../element/icon';
 import { fetchImageMetadata } from '@/app/redux/imageDocuments/fetaures';
+import { reverseArray } from '@/helper';
 
 const OverlayModal = () => {
   const [loading, setLoading] = useState(true);
   const { currentUser } = useAuth();
   const dispatch = useAppDispatch();
   const imageIndex = useAppSelector(state => state.utils.imageIndex);
-  const imagedatas:any = useAppSelector(state => state.imageDocument.imageMetaData);
-  const ImageData: ImageMetadata[] = imagedatas && imagedatas
+  const images:any = useAppSelector(state => state.imageDocument.imageMetaData);
 
+
+  
   const [currentIndex, setCurrentIndex] = useState(imageIndex);
-
+  
   useEffect(() => {
     if (currentUser?.uid) {
       dispatch(fetchImageMetadata(currentUser.uid));
     }
   }, [dispatch, currentUser]);
-
+  
+  const imagedatas:ImageMetadata[] = reverseArray(images)
+  
+  const ImageData: ImageMetadata[] = imagedatas && imagedatas
   const currentImage: ImageMetadata | null = (ImageData && ImageData[currentIndex]) || null;
 
   useEffect(() => {
@@ -33,7 +38,7 @@ const OverlayModal = () => {
   }, [currentImage]);
 
   useEffect(() => {
-    setCurrentIndex(imageIndex); // Update currentIndex when imageIndex changes
+    setCurrentIndex(imageIndex);
   }, [imageIndex]);
 
   const handleImageLoad = () => {

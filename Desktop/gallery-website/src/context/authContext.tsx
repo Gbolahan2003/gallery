@@ -6,7 +6,7 @@ import {
   User as FirebaseUser,
 } from "firebase/auth";
 import React, { createContext, useContext, useEffect, useState, ReactNode } from "react";
-import { auth } from "@/app/firebase/config"; // Adjust the path as needed
+import { auth } from "@/app/firebase/config"; 
 
 interface AuthContextType {
   currentUser: FirebaseUser | null|any;

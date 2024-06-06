@@ -32,7 +32,7 @@ const LandingPage = () => {
             <Link  href={'/login'}  className="mt-4 p-2 bg-primary-accent text-primary-text rounded-lg"
 
 >
-Login</Link>
+Create your gallery</Link>
             {/* <a href="#gallery" className="text-gray-400 hover:text-white mx-4">Gallery</a>
             <a href="#about" className="text-gray-400 hover:text-white mx-4">About</a> */}
             <a href="https://matthew-portfolio-vert.vercel.app/" className="text-gray-400 hover:text-white mx-4">Contact</a>

@@ -10,6 +10,7 @@ import { useAuth } from '@/context/authContext'
 import { ImageMetadata } from '@/app/redux/imageDocuments/interface'
 import { setImageData } from '@/app/redux/imageDocuments'
 import Images from '@/app/(dashboard)/Images'
+import { filterByName } from '@/helper'
 
 const Navbar = () => {
 
@@ -33,9 +34,7 @@ const Navbar = () => {
         }
     }, [ImageData]);
 
-    const filterByName = (array: ImageMetadata[], name: string) => {
-        return array.filter(item => item.name.toLowerCase().includes(name.toLowerCase()));
-    }
+
  
 
     const handleFilter = (e: React.ChangeEvent<HTMLInputElement>) => {

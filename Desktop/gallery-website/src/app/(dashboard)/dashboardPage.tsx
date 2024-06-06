@@ -20,6 +20,8 @@ import { batch } from 'react-redux'
 import ShareModal from '@/components/modals/shareModal'
 import ProgressBar from '@/components/element/progressBar'
 import { getUser } from '../redux/auth/features'
+import { ImageMetadata, imageData } from '../redux/imageDocuments/interface'
+import { reverseArray } from '@/helper'
 
 
  const DashboardPage = () => {
@@ -27,11 +29,14 @@ import { getUser } from '../redux/auth/features'
        const {currentUser} = useAuth()
 
   const dispatch = useAppDispatch()
-  const ImageData = useAppSelector(state=>state.imageDocument.imageMetaData)
+  const ImageDatas:any = useAppSelector(state=>state.imageDocument.imageMetaData)
+  // const ImageData = useAppSelector(state=>state.imageDocument.imageMetaData)
   const show = useAppSelector(state=>state.utils.show)
   const deleteId = useAppSelector(state=>state.utils.deleteId)
   const userData= useAppSelector(state=>state.auth.UserData)
   const shareImage:any= useAppSelector(state=>state.utils.shareImage)
+
+
 
 useEffect( ()=>{
   dispatch(getUser(currentUser.uid))
@@ -43,9 +48,11 @@ if(userData === null){
   return <ProgressBar/>
 }
 
+
+
 const handleDelete=async()=>{
   dispatch(setIsSubmitting(true))
-  console.log(deleteId);
+
   
   let deleted
    deleted = await dispatch(deleteImageData(currentUser.uid, deleteId))
@@ -58,6 +65,11 @@ const handleDelete=async()=>{
   dispatch(showItem(null))
 
 }
+
+
+
+
+const ImageData:ImageMetadata[] =reverseArray(ImageDatas)
 
 
 

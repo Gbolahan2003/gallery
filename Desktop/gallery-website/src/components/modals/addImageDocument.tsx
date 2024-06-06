@@ -123,7 +123,9 @@ const UploadImageModal: React.FC = () => {
               id="editImage"
               name="editImage"
               type="checkbox"
-              className="h-4 w-4 text-blue-600 focus:ring-blue-500 border-gray-300 rounded"
+              className="w-4 h-4 text-theme accent-theme bg-gray-100 border-gray-300 rounded focus:ring-theme"
+
+              // className="h-4 w-4 text-blue-600 focus:ring-blue-500 border-gray-300 rounded"
               checked={editImage}
               onChange={() => setEditImage(!editImage)}
             />
