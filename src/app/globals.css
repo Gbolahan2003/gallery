@@ -1,0 +1,106 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --foreground-rgb: 0, 0, 0;
+  --background-start-rgb: 214, 219, 220;
+  --background-end-rgb: 255, 255, 255;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --foreground-rgb: 255, 255, 255;
+    --background-start-rgb: 0, 0, 0;
+  --background-end-rgb: 0, 0, 0;
+  }
+}
+/* *{
+  border: 1px solid black;
+} */
+
+/* .input{
+  height: 3rem;
+  font-size: 1.2rem;
+  padding: 0.4rem;
+  border-radius: 5px;
+border: 2px solid rgba(84, 95, 125, 0.15);
+background: #FFF;
+} */
+.input {
+  background: #FAFAFA;
+  border: 2px solid #EDEAEA;
+  @apply   border-[#545F7D26] focus:border-theme focus:outline-none rounded-md placeholder:text-lg text-lg h-14 w-full px-3
+}
+
+.input-items {
+  background: #FAFAFA;
+  border: 1px solid #EDEAEA;
+  @apply focus:border-theme focus:outline-none rounded-lg placeholder:text-xs text-sm h-10 px-3
+}
+
+.textarea {
+  background: #FAFAFA;
+  border: 1px solid #EDEAEA;
+  @apply focus:border-theme focus:outline-none rounded-lg placeholder:text-sm text-sm w-full px-3
+}
+
+
+.checkbox {
+  @apply w-4 h-4 rounded-lg
+}
+
+.otp-input {
+  @apply text-lg bg-white rounded-md shadow-slate-200 w-12 h-12 text-center mx-4 border-2 border-mute focus:outline-none
+}
+
+.image-container {
+  position: relative;
+}
+
+.image-container:hover .overlay {
+  opacity: 1;
+}
+
+.overlay {
+  position: absolute;
+  padding-top: 1rem;
+  /* left: 0; */
+  right: 0;
+  bottom: 0;
+  display: flex;
+  justify-content: end;
+  /* align-items: center; */
+  opacity: 0;
+  background-color: rgba(0, 0, 0, 0.5);
+  transition: opacity 0.3s ease;
+}
+
+.overlay button {
+  /* background-color: rgba(255, 255, 255, 0.8); */
+  border: none;
+  padding: 10px;
+  margin: 0 5px;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.overlay button:hover {
+  /* background-color: rgba(255, 255, 255, 1); */
+}
+.image-container img {
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.image-container:hover img {
+  transform: scale(1.05);
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+}
+
+/* Define the gradient */
+.gradient-instagram {
+  background: linear-gradient(45deg, #833AB4, #FD1D1D, #F56040);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
