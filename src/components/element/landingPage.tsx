@@ -77,25 +77,22 @@ function Masonry() {
   return (
     <div className="min-h-screen bg-gray-900 text-white">
       <header className="bg-gray-800 shadow-md px-10">
-        <div className="container mx-auto px-4 py-6 flex justify-between items-center">
+        <div className="container mx-auto lg:px-4 md:px-4  py-6 flex justify-between items-center">
           <h1 className="text-3xl font-bold"><Iconify icon='fluent:camera-sparkles-20-filled'/></h1>
           <nav>
-            <Link  href={'/login'}  className="mt-4 p-2 bg-primary-accent text-primary-text rounded-lg"
-
->
+            <Link  href={'/login'}  className="mt-4 p-2  bg-primary-accent text-primary-text rounded-lg">
 Create your gallery</Link>
-            {/* <a href="#gallery" className="text-gray-400 hover:text-white mx-4">Gallery</a>
-            <a href="#about" className="text-gray-400 hover:text-white mx-4">About</a> */}
-            <a href="https://matthew-portfolio-vert.vercel.app/" className="text-gray-400 hover:text-white mx-4">Contact</a>
+            
+            <a href="https://matthew-portfolio-vert.vercel.app/" className="text-gray-400 hover:text-white mx-4  ">Contact</a>
           </nav>
         </div>
       </header>
       
       <main>
         <section className="bg-gray-700 py-12">
-          <div className="container mx-auto px-4 text-center">
+          <div className="container mx-auto lg:px-4 px-2 text-center">
             <h2 className="text-4xl font-bold">Welcome to the Gallery</h2>
-            <p className="text-gray-300 mt-4">Discover a world of stunning images curated just for you.</p>
+            <p className="text-gray-300 mt-4 px-4">Discover a world of stunning images curated just for you.</p>
           </div>
         </section>
 
