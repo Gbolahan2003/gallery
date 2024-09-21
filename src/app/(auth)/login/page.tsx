@@ -32,8 +32,8 @@ const Login = () => {
     password:Yup.string().required('password is required')
   })
   const initialValues={
-    email:'',
-    password:''
+    email:'user@gmail.com',
+    password:'123456'
   }
  
   const {signIn} = useAuth()
